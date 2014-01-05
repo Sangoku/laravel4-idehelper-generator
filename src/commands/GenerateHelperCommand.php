@@ -222,10 +222,17 @@ EOD;
 				}
 			}//foreach $methodSignatures
 
+			 /**
+                         * workaround for netbeans because it is not able to parse the static variable. 
+                         */
+                        if(strtolower(\Config::get('development.ide')) !=  'netbeans'){
+                            $varType = '  static  ';
+                        }else $varType = '';
+                        
 			//output the public methods
 			foreach ($methodSignatures as $name => $method) {
-				$str .= " * @method  static  " . str_pad($method['return'], $longest) . "  " . $name . "(";
-
+				$str .= " * @method $varType" . str_pad($method['return'], $longest) . "  " . $name . "(";
+ 
 				//output method parameters, if any
 				if (isset($method['params'])) {
 					foreach ($method['params'] as $paramName => $param) {
