@@ -63,3 +63,21 @@ These two methods of reflection get the method parameters as represented in the 
 Comments, Pull Requests, and Issues are more than welcome -- I'm not at all sure I'm doing this right.
 
 You should also check out: https://github.com/barryvdh/laravel-ide-helper -- he takes a similar approach using reflection but generates a very different file, which also works very well, along with some other options.
+
+5.1.2013 Update: Sinisa Culic <sinisaculic@gmail.com>
+
+Added a slight change for the helper so it works for Netbeans to. 
+Tested it with Netbeans 7.4 / Laravel 4.1
+You have to create a file in your app/config folder called develop.php and add the following lines to it if you want it to work in Netbeans. 
+```bash
+return array(
+    'ide' => 'netbeans'
+);
+```
+Also for netbeans you should go to: 
+Tools->Options->Code 
+Compilation and check the option "Also Non-Static Methods after ::" (not required but a nice to have for Laravel)
+After that run 
+```bash
+    composer update --dev
+```
